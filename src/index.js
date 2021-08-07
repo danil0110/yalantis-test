@@ -1,3 +1,39 @@
 require('dotenv').config();
+const path = require('path');
 
-console.log(process.env.PORT);
+const fastify = require('fastify')({ logger: true });
+const helmet = require('fastify-helmet');
+
+const registerRoutes = require('./routes/register.routes');
+
+fastify.register(helmet);
+fastify.register(require('point-of-view'), {
+    engine: {
+        handlebars: require('handlebars'),
+    },
+    includeViewExtension: true,
+    options: {
+        partials: {
+            head: '/src/views/partials/head.hbs',
+            header: '/src/views/partials/header.hbs',
+        },
+    },
+});
+fastify.register(require('fastify-static'), {
+    root: path.join(__dirname, '/public'),
+    prefix: '/public/',
+});
+
+fastify.register(registerRoutes, { prefix: '/' });
+
+const start = async () => {
+    try {
+        await fastify.listen(process.env.PORT || 5000);
+        fastify.log.info(`Server is listening to port ${fastify.server.address().port}`);
+    } catch (err) {
+        fastify.log.error(err);
+        process.exit(1);
+    }
+};
+
+start();
