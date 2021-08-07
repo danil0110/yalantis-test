@@ -2,7 +2,15 @@
 <body>
     {{> header}}
     <main class="container">
+        <h1 class="title">Регистрация</h1>
         
+        <form action="#" method="POST" class="register-form">
+            <input required type="text" name="firstName" placeholder="Имя" minlength="2" maxlength="30">
+            <input required type="text" name="lastName" placeholder="Фамилия" minlength="2" maxlength="30">
+            <input required type="email" name="email" placeholder="E-mail">
+            <input required type="file" name="avatar" id="avatar">
+            <button class="btn">Создать профиль</button>
+        </form>
     </main>
 </body>
 </html>
