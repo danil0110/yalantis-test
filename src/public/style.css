@@ -70,6 +70,33 @@ header nav {
   padding: 5px 10px;
 }
 
+.avatar-wrapper {
+}
+
+.avatar-wrapper input {
+  position: absolute;
+  z-index: -1;
+  opacity: 0;
+}
+
+.avatar-wrapper label {
+  padding: 5px 15px;
+  max-width: fit-content;
+  border: none;
+  border-radius: 5px;
+  background-color: rgb(107, 107, 255);
+  color: #fff;
+  cursor: pointer;
+}
+
+.avatar-wrapper label:hover {
+  background-color: rgb(91, 91, 255);
+}
+
+.avatar-wrapper span {
+  margin-left: 10px;
+}
+
 input[type='file'] {
   padding: 0;
 }

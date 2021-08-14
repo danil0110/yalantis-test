@@ -8,9 +8,15 @@
             <input required type="text" name="firstName" placeholder="Имя" minlength="2" maxlength="30">
             <input required type="text" name="lastName" placeholder="Фамилия" minlength="2" maxlength="30">
             <input required type="email" name="email" placeholder="E-mail">
-            <input required type="file" name="avatar" id="avatar">
+            <div class="avatar-wrapper">
+                <label for="avatar">Аватар...</label>
+                <span>Аватар не выбран</span>
+                <input required type="file" name="avatar" id="avatar">
+            </div>
             <button class="btn">Создать профиль</button>
         </form>
     </main>
+
+    <script src="/public/js/register.js"></script>
 </body>
 </html>
