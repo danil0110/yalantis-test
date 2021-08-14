@@ -5,8 +5,11 @@ const fastify = require('fastify')({ logger: true });
 const helmet = require('fastify-helmet');
 
 const registerRoutes = require('./routes/register.routes');
+const profileRoutes = require('./routes/profile.routes');
 
 fastify.register(helmet);
+fastify.register(require('fastify-formbody'));
+fastify.register(require('fastify-multipart'));
 fastify.register(require('point-of-view'), {
     engine: {
         handlebars: require('handlebars'),
@@ -25,6 +28,7 @@ fastify.register(require('fastify-static'), {
 });
 
 fastify.register(registerRoutes, { prefix: '/' });
+fastify.register(profileRoutes, { prefix: '/profile' });
 
 const start = async () => {
     try {
